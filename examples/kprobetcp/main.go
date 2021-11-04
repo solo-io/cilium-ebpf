@@ -19,7 +19,7 @@ import (
 )
 
 // $BPF_CLANG and $BPF_CFLAGS are set by the Makefile.
-//go:generate go run github.com/cilium/ebpf/cmd/bpf2go -cc clang-13 -cflags $BPF_CFLAGS bpf ./bpf/handler.c -- -I../headers
+//go:generate go run github.com/cilium/ebpf/cmd/bpf2go -cc clang-13 -cflags $BPF_CFLAGS bpf ./bpf/handler.c -- -I../headers -Dbpf_target_x86
 
 const mapKey uint32 = 0
 
