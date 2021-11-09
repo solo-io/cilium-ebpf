@@ -78,6 +78,9 @@ type MapSpec struct {
 
 	// The BTF associated with this map.
 	BTF *btf.Map
+
+	// The name of the ELF section this map was located at
+	SectionName string
 }
 
 func (ms *MapSpec) String() string {

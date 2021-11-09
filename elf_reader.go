@@ -73,7 +73,7 @@ func LoadCollectionSpecFromReader(rd io.ReaderAt) (*CollectionSpec, error) {
 			versionSection = sec
 		case strings.HasPrefix(sec.Name, "maps"):
 			sections[idx] = newElfSection(sec, mapSection)
-		case sec.Name == ".maps":
+		case strings.HasPrefix(sec.Name, ".maps"):
 			sections[idx] = newElfSection(sec, btfMapSection)
 		case sec.Name == ".bss" || sec.Name == ".data" || strings.HasPrefix(sec.Name, ".rodata"):
 			sections[idx] = newElfSection(sec, dataSection)
@@ -601,6 +601,8 @@ func (ec *elfCode) loadBTFMaps(maps map[string]*MapSpec) error {
 				return fmt.Errorf("map %v: %w", name, err)
 			}
 
+			// Add in section name for filtering etc.
+			mapSpec.SectionName = sec.Name
 			maps[name] = mapSpec
 		}
 
