@@ -92,6 +92,9 @@ type ProgramSpec struct {
 
 	// The byte order this program was compiled for, may be nil.
 	ByteOrder binary.ByteOrder
+
+	// The name of the ELF section this program was located at
+	SectionName string
 }
 
 // Copy returns a copy of the spec.

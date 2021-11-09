@@ -284,6 +284,7 @@ func (ec *elfCode) loadPrograms() (map[string]*ProgramSpec, error) {
 			KernelVersion: ec.version,
 			Instructions:  insns,
 			ByteOrder:     ec.ByteOrder,
+			SectionName:   sec.Name,
 		}
 
 		if ec.btf != nil {
